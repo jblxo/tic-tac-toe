@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace tic_tac_toe
@@ -62,9 +63,69 @@ namespace tic_tac_toe
 
             string symbol = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
 
-            symbols.Add(new Symbol(symbol, x, y, playerTurn, cellsX, cellsY));
-            playerTurn = playerTurn == 1 ? 2 : 1;
+            bool cellTaken = symbols.Any(s => s.X == x && s.Y == y);
+
+            if(cellTaken)
+            {
+                MessageBox.Show("This cell is already taken!");
+                return;
+            }
+
+            symbols.Add(new Symbol(symbol, x, y, playerTurn, (int) cellsX, (int) cellsY));
             pbGameField.Refresh();
+            EndTurn();
+        }
+
+        private void EndTurn()
+        {
+            CheckWinner();
+            playerTurn = playerTurn == 1 ? 2 : 1;
+            lblCurrentPlayerSymbol.Text = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
+        }
+
+        private void CheckWinner()
+        {
+            var playerSymbols = symbols.Where(s => s.Player == playerTurn);
+            int x, y;
+            foreach(Symbol s in playerSymbols)
+            {
+                x = s.X;
+                y = s.Y;
+
+                var symbolsRow = playerSymbols.Where(s => s.Y == y && s.X > x && s.X < x + 5).ToList();
+                var symbolsColumn = playerSymbols.Where(s => s.X == x && s.Y > y && s.Y < y + 5).ToList();
+                List<Symbol> symbolsDiagonalL = new List<Symbol>();
+                List<Symbol> symbolsDiagonalR = new List<Symbol>();
+
+                for (int i = 1; i < 5; i++)
+                {
+                    for(int j = 1; j < 5; j++)
+                    {
+                        var sym = playerSymbols.SingleOrDefault(s => s.X - i == x && s.Y - j == y);
+                        if(sym != null)
+                        {
+                            symbolsDiagonalL.Add(sym);
+                        }
+                    }
+                }
+
+                for(int i = 1; i < 5; i++)
+                {
+                    for(int j = 1; j < 5; j++)
+                    {
+                        var sym = playerSymbols.SingleOrDefault(s => s.X - i == x && s.Y + j == y);
+                        if (sym != null)
+                        {
+                            symbolsDiagonalR.Add(sym);
+                        }
+                    }
+                }
+
+                if (symbolsRow.Count == 4 || symbolsColumn.Count == 4 || symbolsDiagonalL.Count == 4 || symbolsDiagonalR.Count == 4)
+                {
+                    MessageBox.Show("KEKW");
+                }
+            }
         }
     }
 

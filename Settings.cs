@@ -19,7 +19,7 @@ namespace tic_tac_toe
         public string Player2Symbol { get { return player2Symbol; } set { player2Symbol = value; } }
         private Settings()
         {
-            FieldSize = new Size(5, 5);
+            FieldSize = new Size(10, 10);
             Player1Symbol = "X";
             Player2Symbol = "O";
         }

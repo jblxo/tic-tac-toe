@@ -69,7 +69,7 @@
             this.npdFieldSizeX.Size = new System.Drawing.Size(132, 23);
             this.npdFieldSizeX.TabIndex = 1;
             this.npdFieldSizeX.Value = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});
@@ -92,7 +92,7 @@
             this.npdFieldSizeY.Size = new System.Drawing.Size(132, 23);
             this.npdFieldSizeY.TabIndex = 1;
             this.npdFieldSizeY.Value = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});
