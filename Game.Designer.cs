@@ -41,6 +41,7 @@
             this.pbGameField.TabIndex = 0;
             this.pbGameField.TabStop = false;
             this.pbGameField.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGameField_Paint);
+            this.pbGameField.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbGameField_MouseClick);
             // 
             // lblCurrentPlayerSymbol
             // 
