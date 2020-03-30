@@ -35,18 +35,19 @@
             // 
             // pbGameField
             // 
-            this.pbGameField.Location = new System.Drawing.Point(12, 61);
+            this.pbGameField.Location = new System.Drawing.Point(34, 61);
             this.pbGameField.Name = "pbGameField";
-            this.pbGameField.Size = new System.Drawing.Size(960, 488);
+            this.pbGameField.Size = new System.Drawing.Size(600, 600);
             this.pbGameField.TabIndex = 0;
             this.pbGameField.TabStop = false;
+            this.pbGameField.Paint += new System.Windows.Forms.PaintEventHandler(this.pbGameField_Paint);
             // 
             // lblCurrentPlayerSymbol
             // 
             this.lblCurrentPlayerSymbol.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCurrentPlayerSymbol.Location = new System.Drawing.Point(12, 9);
             this.lblCurrentPlayerSymbol.Name = "lblCurrentPlayerSymbol";
-            this.lblCurrentPlayerSymbol.Size = new System.Drawing.Size(960, 49);
+            this.lblCurrentPlayerSymbol.Size = new System.Drawing.Size(660, 49);
             this.lblCurrentPlayerSymbol.TabIndex = 1;
             this.lblCurrentPlayerSymbol.Text = "X";
             this.lblCurrentPlayerSymbol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -55,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(684, 711);
             this.Controls.Add(this.lblCurrentPlayerSymbol);
             this.Controls.Add(this.pbGameField);
             this.Name = "Game";
