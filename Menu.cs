@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace tic_tac_toe
@@ -13,6 +8,38 @@ namespace tic_tac_toe
         public Menu()
         {
             InitializeComponent();
+        }
+
+        private void btnPCGame_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnHumanGame_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hint for player.");
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            SwitchForms(new SettingsForm());
+        }
+
+        private void btnEnd_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void SwitchForms(Form form)
+        {
+            form.Show();
+            form.FormClosed += (sender, args) => Show();
+            Hide();
         }
     }
 }

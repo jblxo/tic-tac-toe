@@ -55,6 +55,7 @@
             this.btnPCGame.TabIndex = 1;
             this.btnPCGame.Text = "New game against PC";
             this.btnPCGame.UseVisualStyleBackColor = true;
+            this.btnPCGame.Click += new System.EventHandler(this.btnPCGame_Click);
             // 
             // btnHumanGame
             // 
@@ -65,6 +66,7 @@
             this.btnHumanGame.TabIndex = 1;
             this.btnHumanGame.Text = "New game against human";
             this.btnHumanGame.UseVisualStyleBackColor = true;
+            this.btnHumanGame.Click += new System.EventHandler(this.btnHumanGame_Click);
             // 
             // btnHelp
             // 
@@ -75,6 +77,7 @@
             this.btnHelp.TabIndex = 1;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnSettings
             // 
@@ -85,6 +88,7 @@
             this.btnSettings.TabIndex = 1;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnEnd
             // 
@@ -95,6 +99,7 @@
             this.btnEnd.TabIndex = 1;
             this.btnEnd.Text = "End";
             this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
             // 
             // Menu
             // 
