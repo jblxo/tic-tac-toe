@@ -12,12 +12,12 @@ namespace tic_tac_toe
 
         private void btnPCGame_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            SwitchForms(new Game(GameMode.PC));
         }
 
         private void btnHumanGame_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            SwitchForms(new Game(GameMode.Human));
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
