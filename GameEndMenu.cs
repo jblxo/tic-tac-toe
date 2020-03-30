@@ -24,7 +24,7 @@ namespace tic_tac_toe
         {
             game.Reset();
             game.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void btnGoToMenu_Click(object sender, EventArgs e)

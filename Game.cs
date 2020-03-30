@@ -18,8 +18,12 @@ namespace tic_tac_toe
         {
             InitializeComponent();
 
+            lblCurrentPlayerSymbol.Text = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
             this.mode = mode;
-            Reset();
+            symbols.Clear();
+            cellsX = 0f;
+            cellsY = 0f;
+            pbGameField.Refresh();
         }
 
         private void DrawField(Graphics g)
@@ -86,6 +90,7 @@ namespace tic_tac_toe
         public void Reset()
         {
             playerTurn = playerTurn == 1 ? 2 : 1;
+            lblCurrentPlayerSymbol.Text = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
             symbols.Clear();
             cellsX = 0f;
             cellsY = 0f;
