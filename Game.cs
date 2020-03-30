@@ -19,7 +19,7 @@ namespace tic_tac_toe
             InitializeComponent();
 
             this.mode = mode;
-            pbGameField.Refresh();
+            Reset();
         }
 
         private void DrawField(Graphics g)
@@ -83,6 +83,15 @@ namespace tic_tac_toe
             lblCurrentPlayerSymbol.Text = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
         }
 
+        public void Reset()
+        {
+            playerTurn = playerTurn == 1 ? 2 : 1;
+            symbols.Clear();
+            cellsX = 0f;
+            cellsY = 0f;
+            pbGameField.Refresh();
+        }
+
         private void CheckWinner()
         {
             var playerSymbols = symbols.Where(s => s.Player == playerTurn);
@@ -99,31 +108,28 @@ namespace tic_tac_toe
 
                 for (int i = 1; i < 5; i++)
                 {
-                    for(int j = 1; j < 5; j++)
+                    var sym = playerSymbols.SingleOrDefault(s => s.X + i == x && s.Y + i == y);
+                    if (sym != null)
                     {
-                        var sym = playerSymbols.SingleOrDefault(s => s.X - i == x && s.Y - j == y);
-                        if(sym != null)
-                        {
-                            symbolsDiagonalL.Add(sym);
-                        }
+                        symbolsDiagonalL.Add(sym);
                     }
                 }
 
-                for(int i = 1; i < 5; i++)
+                for (int i = 1; i < 5; i++)
                 {
-                    for(int j = 1; j < 5; j++)
+                    var sym = playerSymbols.SingleOrDefault(s => s.X - i == x && s.Y + i == y);
+                    if (sym != null)
                     {
-                        var sym = playerSymbols.SingleOrDefault(s => s.X - i == x && s.Y + j == y);
-                        if (sym != null)
-                        {
-                            symbolsDiagonalR.Add(sym);
-                        }
+                        symbolsDiagonalR.Add(sym);
                     }
                 }
 
                 if (symbolsRow.Count == 4 || symbolsColumn.Count == 4 || symbolsDiagonalL.Count == 4 || symbolsDiagonalR.Count == 4)
                 {
-                    MessageBox.Show("KEKW");
+                    var winner = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
+                    var end = new GameEndMenu(winner + " has won! Congratulations!", this);
+                    end.Show();
+                    this.Hide();
                 }
             }
         }
