@@ -56,12 +56,12 @@
             // 
             this.npdFieldSizeX.Location = new System.Drawing.Point(42, 33);
             this.npdFieldSizeX.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
             this.npdFieldSizeX.Minimum = new decimal(new int[] {
-            3,
+            7,
             0,
             0,
             0});
@@ -69,7 +69,7 @@
             this.npdFieldSizeX.Size = new System.Drawing.Size(132, 23);
             this.npdFieldSizeX.TabIndex = 1;
             this.npdFieldSizeX.Value = new decimal(new int[] {
-            3,
+            7,
             0,
             0,
             0});
@@ -79,12 +79,12 @@
             // 
             this.npdFieldSizeY.Location = new System.Drawing.Point(205, 33);
             this.npdFieldSizeY.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
             this.npdFieldSizeY.Minimum = new decimal(new int[] {
-            3,
+            7,
             0,
             0,
             0});
@@ -92,7 +92,7 @@
             this.npdFieldSizeY.Size = new System.Drawing.Size(132, 23);
             this.npdFieldSizeY.TabIndex = 1;
             this.npdFieldSizeY.Value = new decimal(new int[] {
-            3,
+            7,
             0,
             0,
             0});

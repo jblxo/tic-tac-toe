@@ -19,12 +19,12 @@ namespace tic_tac_toe
             this.player = player;
             this.x = x;
             this.y = y;
-            position = new Point(x * width + width / 2 - 12, y * height + height / 2 - 12);
+            position = new Point(x * width + width / 2 - 9, y * height + height / 2 - 9);
         }
 
         public void Draw(Graphics g)
         {
-            g.DrawString(character, new Font("Arial", 24), Brushes.Black, position);
+            g.DrawString(character, new Font("Arial", 18), Brushes.Black, position);
         }
     }
 }
