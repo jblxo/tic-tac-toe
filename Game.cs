@@ -24,6 +24,35 @@ namespace tic_tac_toe
             cellsX = 0f;
             cellsY = 0f;
             pbGameField.Refresh();
+            if(mode == GameMode.PC && playerTurn == 2)
+            {
+                PCTurn();
+            }
+        }
+
+        private void PCTurn()
+        {
+            List<Field> possibleFields = new List<Field>();
+
+            for(int i = 0; i < Settings.Instance.FieldSize.Width; i++)
+            {
+                for(int j = 0; j < Settings.Instance.FieldSize.Height; j++)
+                {
+                    bool taken = symbols.Any(s => s.X == i && s.Y == j);
+
+                    if(!taken)
+                    {
+                        possibleFields.Add(new Field { X = i, Y = j });
+                    }
+                }
+            }
+
+            Random r = new Random();
+            int index = r.Next(possibleFields.Count);
+            string symbol = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
+            symbols.Add(new Symbol(symbol, possibleFields[index].X, possibleFields[index].Y, playerTurn, (int)cellsX, (int)cellsY));
+            pbGameField.Refresh();
+            EndTurn();
         }
 
         private void DrawField(Graphics g)
@@ -82,9 +111,14 @@ namespace tic_tac_toe
 
         private void EndTurn()
         {
-            CheckWinner();
+            bool win = CheckWinner();
+            if (win) return;
             playerTurn = playerTurn == 1 ? 2 : 1;
             lblCurrentPlayerSymbol.Text = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
+            if(mode == GameMode.PC && playerTurn == 2)
+            {
+                PCTurn();
+            }
         }
 
         public void Reset()
@@ -92,12 +126,18 @@ namespace tic_tac_toe
             playerTurn = playerTurn == 1 ? 2 : 1;
             lblCurrentPlayerSymbol.Text = playerTurn == 1 ? Settings.Instance.Player1Symbol : Settings.Instance.Player2Symbol;
             symbols.Clear();
-            cellsX = 0f;
-            cellsY = 0f;
+            float width = Settings.Instance.FieldSize.Width;
+            float height = Settings.Instance.FieldSize.Height;
+            cellsX = pbGameField.Width / width;
+            cellsY = pbGameField.Height / height;
             pbGameField.Refresh();
+            if(mode == GameMode.PC && playerTurn == 2)
+            {
+                PCTurn();
+            }
         }
 
-        private void CheckWinner()
+        private bool CheckWinner()
         {
             var playerSymbols = symbols.Where(s => s.Player == playerTurn);
             int x, y;
@@ -135,9 +175,18 @@ namespace tic_tac_toe
                     var end = new GameEndMenu(winner + " has won! Congratulations!", this);
                     end.Show();
                     this.Hide();
+                    return true;
                 }
             }
+
+            return false;
         }
+    }
+
+    public class Field
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 
     public enum GameMode
